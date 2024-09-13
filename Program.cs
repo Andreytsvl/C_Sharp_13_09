@@ -33,14 +33,19 @@
 // }
 // OpenMatr(5);
 
-int Fact(int n)
-{
-    if ((n == 1)||(n==0))
-    {
-        Console.WriteLine("stop"); // отладочный вывод
-        return 1;
-    }
-    Console.WriteLine(n); // отладочный вывод
-    return n * Fact(n - 1);
-}
-Console.WriteLine(Fact(5));
+// int Fact(int n)
+// {
+//     if ((n == 1)||(n==0))
+//     {
+//         Console.WriteLine("stop"); // отладочный вывод
+//         return 1;
+//     }
+//     Console.WriteLine(n); // отладочный вывод
+//     return n * Fact(n - 1);
+// }
+// Console.WriteLine(Fact(5));
+
+// task 46 Задайте двумерный массив размерами м*н,
+// заполненный случайными числами
+
+
