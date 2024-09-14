@@ -178,7 +178,7 @@ using static System.Console;
 //             {
 //                 array[i, j] = array[i, j] * array[i, j];
 //             }
-            
+
 //         }
 //     }
 // }
@@ -204,3 +204,50 @@ using static System.Console;
 // Найдите сумму элементов на главной диагонали
 // (с индексами (0;0);(1;1) и т.д.)
 Clear();
+Write("Введите размер массива через пробел ");
+string[] nums = ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+int[,] array = GetArray(int.Parse(nums[0]), int.Parse(nums[1]), 0, 10);
+PrintArray(array);
+Write($"Сумма главной диагонали {SumDiagArrey(array)}");
+
+int[,] GetArray(int rows, int columns, int min, int max)
+{
+    int[,] result = new int[rows, columns];
+    for (int i = 0; i < result.GetLength(0); i++) // метод возвращает значение ровс (на нулевой позиции)
+    {
+        for (int j = 0; j < result.GetLength(1); j++)
+        {
+            result[i, j] = new Random().Next(min, max + 1);
+        }
+    }
+    return result;
+}
+
+void PrintArray(int[,] inArray)
+{
+    for (int i = 0; i < inArray.GetLength(0); i++)
+    {
+        for (int j = 0; j < inArray.GetLength(1); j++)
+        {
+            Write($"{inArray[i, j]} ");
+        }
+        WriteLine();
+    }
+}
+
+int SumDiagArrey(int[,] inArray)
+{
+    int sum = 0;
+    for (int i = 0; i < inArray.GetLength(0); i++)
+    {
+        for (int j = 0; j < inArray.GetLength(1); j++)
+        {
+            if (i == j)
+            {
+                sum = sum + inArray[i, j];
+            }
+
+        }
+    }
+    return sum;
+}
