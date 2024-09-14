@@ -203,17 +203,173 @@ using static System.Console;
 // task 51 Задайте Двумерный массив
 // Найдите сумму элементов на главной диагонали
 // (с индексами (0;0);(1;1) и т.д.)
+// Clear();
+// Write("Введите размер массива через пробел ");
+// string[] nums = ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+// int[,] array = GetArray(int.Parse(nums[0]), int.Parse(nums[1]), 0, 10);
+// PrintArray(array);
+// Write($"Сумма главной диагонали {SumDiagArrey(array)}");
+
+// int[,] GetArray(int rows, int columns, int min, int max)
+// {
+//     int[,] result = new int[rows, columns];
+//     for (int i = 0; i < result.GetLength(0); i++) // метод возвращает значение ровс (на нулевой позиции)
+//     {
+//         for (int j = 0; j < result.GetLength(1); j++)
+//         {
+//             result[i, j] = new Random().Next(min, max + 1);
+//         }
+//     }
+//     return result;
+// }
+
+// void PrintArray(int[,] inArray)
+// {
+//     for (int i = 0; i < inArray.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < inArray.GetLength(1); j++)
+//         {
+//             Write($"{inArray[i, j]} ");
+//         }
+//         WriteLine();
+//     }
+// }
+
+// int SumDiagArrey(int[,] inArray)
+// {
+//     int sum = 0;
+//     for (int i = 0; i < inArray.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < inArray.GetLength(1); j++)
+//         {
+//             if (i == j)
+//             {
+//                 sum = sum + inArray[i, j];
+//             }
+
+//         }
+//     }
+//     return sum;
+// }
+
+// task 47 DZ Задайте двумерный массив
+// размером м на н , заполненый случайными
+// вещественными числами
+// Clear();
+// Write("Введите размер массива через пробел ");
+// string[] nums = ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+// double[,] array = GetArray(int.Parse(nums[0]), int.Parse(nums[1]), 0, 10);
+// PrintArray(array);
+
+// double[,] GetArray(int rows, int columns, int min, int max)
+// {
+//     double[,] result = new double[rows, columns];
+//     for (int i = 0; i < result.GetLength(0); i++) 
+//     {
+//         for (int j = 0; j < result.GetLength(1); j++)
+//         {
+//             result[i, j] = ((double)(new Random().Next(min*10, (max + 1)*10)))/10;
+//             // преобразует к вещественному с 1 знаком после запятой 
+//         }
+//     }
+//     return result;
+// }
+
+// void PrintArray(double[,] inArray)
+// {
+//     for (int i = 0; i < inArray.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < inArray.GetLength(1); j++)
+//         {
+//             Write($"{inArray[i, j]} ");
+//         }
+//         WriteLine();
+//     }
+// }
+
+// task 50 DZ 
+// Напишите программу, которая на вход принимает значение
+// элемента в массиве, и возвращает инф. о его наличии в массиве
+// Clear();
+// Write("Введите размер массива через пробел ");
+// string[] nums = ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+// int[,] array = GetArray(int.Parse(nums[0]), int.Parse(nums[1]), 0, 10);
+
+// PrintArray(array);
+// Write("Введите значение элемента ");
+// int n = int.Parse(ReadLine());
+// ElementInArrey(array, n);
+
+
+// int[,] GetArray(int rows, int columns, int min, int max)
+// {
+//     int[,] result = new int[rows, columns];
+//     for (int i = 0; i < result.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < result.GetLength(1); j++)
+//         {
+//             result[i, j] = new Random().Next(min, max + 1);
+//         }
+//     }
+//     return result;
+// }
+
+// void PrintArray(int[,] inArray)
+// {
+//     for (int i = 0; i < inArray.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < inArray.GetLength(1); j++)
+//         {
+//             Write($"{inArray[i, j]} ");
+//         }
+//         WriteLine();
+//     }
+// }
+
+// void ElementInArrey(int[,] inArray, int n)
+// {
+//     int stop = 0;
+//     for (int i = 0; i < inArray.GetLength(0); i++)
+//     {
+//         if (stop == 1)
+//         {
+//             break;
+//         }
+//         for (int j = 0; j < inArray.GetLength(1); j++)
+//         {
+//             if (inArray[i, j] == n)
+//             {
+//                 Write("элемент найден ");
+//                 stop = 1;
+//                 break;
+//             }
+
+
+//         }
+
+//     }
+//     if (stop == 0)
+//     {
+//         Write("элемент не найден");
+//     }
+
+// }
+
+// task 52 DZ 
+// Задайте двумерный массив из целых чисел Найдите 
+// среднее арифметическое в каждом столбце
 Clear();
 Write("Введите размер массива через пробел ");
 string[] nums = ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 int[,] array = GetArray(int.Parse(nums[0]), int.Parse(nums[1]), 0, 10);
 PrintArray(array);
-Write($"Сумма главной диагонали {SumDiagArrey(array)}");
+WriteLine($" Среднее арифметическое каждого столбца = {String.Join(";",GetSumColumn(array))}");
+
 
 int[,] GetArray(int rows, int columns, int min, int max)
 {
     int[,] result = new int[rows, columns];
-    for (int i = 0; i < result.GetLength(0); i++) // метод возвращает значение ровс (на нулевой позиции)
+    for (int i = 0; i < result.GetLength(0); i++)
     {
         for (int j = 0; j < result.GetLength(1); j++)
         {
@@ -235,19 +391,21 @@ void PrintArray(int[,] inArray)
     }
 }
 
-int SumDiagArrey(int[,] inArray)
+double[] GetSumColumn(int[,] inArray)
 {
-    int sum = 0;
-    for (int i = 0; i < inArray.GetLength(0); i++)
+    double[] result = new double[inArray.GetLength(1)];
+    for (int i = 0; i < inArray.GetLength(1); i++)
     {
-        for (int j = 0; j < inArray.GetLength(1); j++)
+        double a = 0;
+        for (int j = 0; j < inArray.GetLength(0); j++)
         {
-            if (i == j)
-            {
-                sum = sum + inArray[i, j];
-            }
+            a += inArray[j,i];
 
+           
         }
+        result[i] = Math.Round(a/inArray.GetLength(0),2); // Округляет до второго знака
     }
-    return sum;
+    return result;
 }
+
+
